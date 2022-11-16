@@ -304,7 +304,6 @@ BigReal::BigReal(string realNumber) {
         num = "0";
         fractionalNum = "-" + fractionalNum;
     } else if (num[0] == '-') {
-        num = num;
         fractionalNum = "-" + fractionalNum;
     }
     number = BigDecimalInt(num);
@@ -312,7 +311,7 @@ BigReal::BigReal(string realNumber) {
     this->removeZeros();
 }
 
-BigReal::BigReal(const BigDecimalInt bigInteger) {
+BigReal::BigReal(const BigDecimalInt &bigInteger) {
     number = bigInteger;
     floatNumber = BigDecimalInt("0");
     this->removeZeros();
@@ -342,7 +341,7 @@ void BigReal::operator=(BigReal &&other) {
     this->removeZeros();
 }
 
-BigReal BigReal::operator+(const BigReal other) {
+BigReal BigReal::operator+(const BigReal &other) {
     BigReal result, num2 = other;
     if (this->sign() != num2.sign()) {
         if (num2.sign()) {
@@ -464,7 +463,7 @@ bool BigReal::operator>(BigReal anotherReal) {
     }
 }
 
-bool BigReal::operator<(const BigReal anotherReal) {
+bool BigReal::operator<(const BigReal &anotherReal) {
     return !(*this == anotherReal || *this > anotherReal);
 }
 
