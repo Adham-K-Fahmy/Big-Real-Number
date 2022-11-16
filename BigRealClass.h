@@ -61,24 +61,24 @@ public:
 
 class BigReal {
 private:
-    BigDecimalInt number, floatNumber;
+    BigDecimalInt number = BigDecimalInt("0"), floatNumber = BigDecimalInt("0");
 
 public:
     BigReal(double realNumber1 = 0.0);
 
     BigReal(string realNumber);
 
-    BigReal(const BigDecimalInt bigInteger);
+    BigReal(const BigDecimalInt &bigInteger);
 
     BigReal(const BigReal &other); // Copy constructor
     BigReal(BigReal &&other); // Move constructor
     void operator=(BigReal &other); // Assignment operator
     void operator=(BigReal &&other); // Move assignment
-    BigReal operator+(const BigReal other);
+    BigReal operator+(const BigReal &other);
 
     BigReal operator-(BigReal other);
 
-    bool operator<(const BigReal anotherReal);
+    bool operator<(const BigReal &anotherReal);
 
     bool operator>(BigReal anotherReal);
 
